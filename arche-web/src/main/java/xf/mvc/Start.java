@@ -1,4 +1,4 @@
-package zing;
+package xf.mvc;
 
 import java.io.IOException;
 
@@ -26,7 +26,7 @@ public class Start {
     private static Logger log = Logger.getLogger(Start.class);            
     static{
     	/**
-    	 * <bean id="start" class="zing.Start" lazy-init = "true"></bean>
+    	 * <bean id="start" class="com.xf.mvc.Start" lazy-init = "true"></bean>
     	 * 
     	 * 懒加载---就是在spring容器启动的是先不把所有的bean都加载到spring的容器中去，而是在当需要用的时候，才把这个对象实例化到容器中。 
     	 * 
@@ -35,6 +35,6 @@ public class Start {
     	 * lazy-init 比default-lazy-init的优先级高。default-lazy-init 配置在beans上
     	 * 
     	 */
-    	log.error("log4j run!");
+    	log.error("log4j already run!");
     }
 }

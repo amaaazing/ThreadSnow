@@ -9,7 +9,7 @@
                         http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	<bean id="start" class="zing.Start" lazy-init = "true"></bean>
+	<bean id="start" class="xf.mvc.Start" lazy-init = "false"></bean>
 
 
 </beans>

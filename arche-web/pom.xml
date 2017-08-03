@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.zing.archetype</groupId>
-  <artifactId>arche-web</artifactId>
+  <artifactId>arche-all</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>arche-web Maven Webapp</name>
+  <name>arche Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
  <properties>
@@ -17,6 +17,11 @@
   	<maven-clean-plugin.version>2.4.1</maven-clean-plugin.version>
   	<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
   	<log4j.version>1.2.17</log4j.version>
+  	<servlet-api.version>2.5</servlet-api.version>
+  	<!-- 数学函数、统计 -->
+  	<commons-math.version>3.6.1</commons-math.version>
+  	<!-- 字符串处理  A Java 8 library for working with String-->
+  	<strman.version>0.4.0</strman.version>
   </properties>
   
   
@@ -88,8 +93,29 @@
 	  	<artifactId>spring-test</artifactId> 
 	  	<version>${spring.version}</version> 
 	  </dependency>
-	  
-	  
+
+	<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>servlet-api</artifactId>
+	    <version>${servlet-api.version}</version>
+	</dependency>
+
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->  
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-math3</artifactId>
+	    <version>${commons-math.version}</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/com.shekhargulati/strman -->
+	<dependency>
+	    <groupId>com.shekhargulati</groupId>
+	    <artifactId>strman</artifactId>
+	    <version>${strman.version}</version>
+	</dependency>
+			  
   </dependencies>
 
 
@@ -98,8 +124,7 @@
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<testOutputDirectory>target/test/java</testOutputDirectory>
-		<plugins>
-			<!-- 解决不支持泛型问题
+		<plugins>			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -109,7 +134,7 @@
 					<target>1.6</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
-			</plugin> -->
+			</plugin>
 			
 			<!-- 指定编码集，也可使用属性<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>指定 -->
 			<plugin> 

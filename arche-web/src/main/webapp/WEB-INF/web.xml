@@ -26,7 +26,25 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>	  
   
-  
+    <!-- 每一个servlet标签对应一个ServletConfig对象 -->
+	<servlet>
+		<!--给你的servlet起名字，任意的-->
+	    <servlet-name>myServlet</servlet-name>
+	    <!--指明servlet的路径，包名+类名 注意类名后不能加上java-->
+	    <servlet-class>xf.mvc.servlet.MyServlet</servlet-class>
+	    <init-param>
+	    	<param-name>path</param-name>
+	    	<param-value>/gce/xf</param-value>
+	    </init-param>
+	</servlet>
+	 
+	<servlet-mapping>
+	    <servlet-name>myServlet</servlet-name>
+	    <!--这是浏览器中输入的访问该servlet的url;任意的-->
+		<url-pattern>/gce</url-pattern>
+	</servlet-mapping>
+
+
   
   
   
