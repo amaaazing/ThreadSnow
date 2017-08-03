@@ -30,8 +30,7 @@ public class MyServlet implements Servlet{
 	 * 引入servlet的生命周期
 	 * 
 	 * 
-	 */
-	
+	 */	
 	
 	private String path;
 	
