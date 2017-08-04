@@ -4,6 +4,7 @@
 		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
 		 id="WebApp_ID" version="3.0">
   
+  	<!-- 配置web初始参数，放在ServletContext对象中 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
@@ -32,21 +33,50 @@
 	    <servlet-name>myServlet</servlet-name>
 	    <!--指明servlet的路径，包名+类名 注意类名后不能加上java-->
 	    <servlet-class>xf.mvc.servlet.MyServlet</servlet-class>
+	    <!-- 当servlet配置了初始化参数后，web容器在创建servlet实例对象时，会自动将这些初始化参数封装到ServletConfig对 象中，
+	       并在调用servlet的init方法时，将ServletConfig对象传递给servlet。进而，
+	       我们通过ServletConfig对象 就可以得到当前servlet的初始化参数信息。 -->
 	    <init-param>
 	    	<param-name>path</param-name>
 	    	<param-value>/gce/xf</param-value>
 	    </init-param>
+	    <!-- 配置了一个<load-on-startup>元素，那么WEB应用程序在启动时，就会装载并创建Servlet的实例对象、以及调用Servlet实例对象的init()方法 -->
+	    <load-on-startup>1</load-on-startup>
 	</servlet>
 	 
 	<servlet-mapping>
 	    <servlet-name>myServlet</servlet-name>
-	    <!--这是浏览器中输入的访问该servlet的url;任意的-->
+	    <!-- 配置Servlet的对外访问路径。这是浏览器中输入的访问该servlet的url;任意的-->
 		<url-pattern>/gce</url-pattern>
 	</servlet-mapping>
-
-
+	
+	<!-- 同一个Servlet可以被映射到多个URL上 -->
+	<servlet-mapping>
+	    <servlet-name>myServlet</servlet-name>
+		<url-pattern>/gce/myServlet</url-pattern>
+	</servlet-mapping>
   
+  	<!-- Servlet访问URL使用*通配符映射。只能有两种固定的格式：一种格式是"*.扩展名"，另一种格式是以正斜杠（/）开头并以"/*"结尾-->
+	<servlet-mapping>
+	    <servlet-name>myServlet</servlet-name>
+		<url-pattern>/gce/bxf/*</url-pattern>
+	</servlet-mapping>  
+	<!-- 问题：如果配置多个url，web容器的匹配原则是什么呢？ 匹配的原则就是"谁长得更像就找谁" -->  
   
-  
-  
+ 	<!-- 缺省Servlet 
+ 	如果某个Servlet的映射路径仅仅为一个正斜杠（/），那么这个Servlet就成为当前Web应用程序的缺省Servlet。
+　　凡是在web.xml文件中找不到匹配的<servlet-mapping>元素的URL，它们的访问请求都将交给缺省Servlet处理，
+	也就是说，缺省Servlet用于处理所有其他Servlet都不处理的访问请求。 
+	
+	在<tomcat的安装目录>\conf\web.xml文件中，注册了一个名称为org.apache.catalina.servlets.DefaultServlet的Servlet，并将这个Servlet设置为了缺省Servlet。
+	当访问Tomcat服务器中的某个静态HTML文件和图片时，实际上是在访问这个缺省Servlet。	
+ 	-->
+ 	
+ 	<!-- Servlet的线程安全问题
+ 	当多个客户端并发访问同一个Servlet时，web服务器会为每一个客户端的访问请求创建一个线程，并在这个线程上调用Servlet的service方法，
+ 	因此service方法内如果访问了同一个资源(Servlet对象的资源)的话，就有可能引发线程安全问题。
+ 	如果在方法内部定义了一些资源(变量，集合等),那么每一个线程都有这些东西，所以就不存在线程安全问题了
+ 	 -->
+ 	 
+ 	 
 </web-app>
