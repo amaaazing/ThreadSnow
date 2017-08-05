@@ -77,6 +77,33 @@
  	因此service方法内如果访问了同一个资源(Servlet对象的资源)的话，就有可能引发线程安全问题。
  	如果在方法内部定义了一些资源(变量，集合等),那么每一个线程都有这些东西，所以就不存在线程安全问题了
  	 -->
- 	 
+
+	  <!--配置过滤器-->
+	  <filter>
+	      <filter-name>FilterDemo01</filter-name>
+	      <filter-class>me.gacl.web.filter.FilterDemo01</filter-class>
+	  </filter>
+	  
+	  <!--映射过滤器
+	  <filter-mapping>元素用于设置一个 Filter 所负责拦截的资源。一个Filter拦截的资源可通过两种方式来指定：Servlet 名称和资源访问的请求路径
+　　    <filter-name>子元素用于设置filter的注册名称。该值必须是在<filter>元素中声明过的过滤器的名字
+　　    <url-pattern>设置 filter 所拦截的请求路径(过滤器关联的URL样式)
+　　	  <servlet-name>指定过滤器所拦截的Servlet名称。
+　　    <dispatcher>指定过滤器所拦截的资源被 Servlet 容器调用的方式，可以是REQUEST,INCLUDE,FORWARD和ERROR之一，默认REQUEST。
+           用户可以设置多个<dispatcher> 子元素用来指定 Filter 对资源的多种调用方式进行拦截。
+           
+      <dispatcher> 子元素可以设置的值及其意义：
+
+    REQUEST：当用户直接访问页面时，Web容器将会调用过滤器。如果目标资源是通过RequestDispatcher的include()或forward()方法访问时，那么该过滤器就不会被调用。
+    INCLUDE：如果目标资源是通过RequestDispatcher的include()方法访问时，那么该过滤器将被调用。除此之外，该过滤器不会被调用。
+    FORWARD：如果目标资源是通过RequestDispatcher的forward()方法访问时，那么该过滤器将被调用，除此之外，该过滤器不会被调用。
+    ERROR：如果目标资源是通过声明式异常处理机制调用时，那么该过滤器将被调用。除此之外，过滤器不会被调用。
+      
+	  -->
+	  <filter-mapping>
+	      <filter-name>FilterDemo01</filter-name>
+	      <!--“/*”表示拦截所有的请求 -->
+	      <url-pattern>/*</url-pattern>
+	  </filter-mapping> 	 
  	 
 </web-app>

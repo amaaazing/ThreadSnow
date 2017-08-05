@@ -10,7 +10,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+ * 重写init()方法，视情况调用super.init()
+ * 重写了Servlet的init方法后一定要记得调用父类的init方法，否则在service/doGet/doPost方法中使用
+ * getServletContext()方法获取ServletContext对象时就会出现java.lang.NullPointerException异常
+ *
+ */
 public class MyServletContext extends HttpServlet{
 
 	/**
