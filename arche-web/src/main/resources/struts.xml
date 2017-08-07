@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!-- 创建action对象是由struts2的ObjctFactory的方法创建,加了struts2-spring-plugin包后struts的过滤器会加载struts-plugin.xml配置文件，
+       这个包的任务就是创建action的对象由原来的struts转到了spring创建，所以必须要在spring配置文件中配置action
+       ObjectFactory？？ 
+    <constant name="struts.objectFactory" value="spring"/>-->
+
+	
+	<package name="base" extends="struts-default">
+	
+		<!-- 引入struts2-spring-plugin jar包后，Action的2种配置方式之一（Action由Structs管理），此处的class是全类名
+		action中的属性，spring会自动根据bean id 注入，无需在spring文件中配置属性的依赖关系
+		（bean 的 id 值必须和 Action 中的变量名相同）
+		-->
+		<action name="myAction" class="xf.mvc.struts.MyAction">
+			<result>/index.jsp</result>
+		</action>
+		
+		<!-- 引入struts2-spring-plugin jar包后，Action的2种配置方式之二（Action由Spring管理），此处class是spring 的bean id	 
+			<bean id="myAction" class="xf.mvc.struts.MyAction" scope="prototype">
+				<property name="endService" ref="endService"></property>
+			</bean> 
+		
+		<action name="myAction" class="myAction">
+			<result>/index.jsp</result>
+		</action>	-->	
+	
+	</package>
+
+
+</struts>

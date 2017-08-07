@@ -65,4 +65,9 @@ public class Stack<Item> implements Iterator<Item> {
 		return item;
 	}
 
+	@Override
+	public void remove() {
+		
+	}
+
 }

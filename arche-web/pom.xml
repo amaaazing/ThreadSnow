@@ -10,7 +10,8 @@
 
  <properties>
   	<spring.version>3.2.0.RELEASE</spring.version> 
-  	<struts2-core.version>2.3.20</struts2-core.version> 
+  	<struts2-core.version>2.3.30</struts2-core.version>
+  	<struts2-spring-plugin.version>2.3.30</struts2-spring-plugin.version> 
   	<junit.version>4.10</junit.version> 
   	<maven-dependency-plugin.version>2.1</maven-dependency-plugin.version>
   	<maven-resources-plugin.version>2.3</maven-resources-plugin.version>
@@ -45,6 +46,14 @@
   		<artifactId>struts2-core</artifactId> 
   		<version>${struts2-core.version}</version> 
   	 </dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.struts/struts2-spring-plugin -->
+		<!-- 解决 Caused by: Cannot locate the chosen ObjectFactory implementation: spring - [unknown location] -->
+		<dependency>
+		    <groupId>org.apache.struts</groupId>
+		    <artifactId>struts2-spring-plugin</artifactId>
+		    <version>${struts2-spring-plugin.version}</version>
+		</dependency>
   	 
   	 <dependency>
   		<groupId>org.springframework</groupId> 
@@ -115,6 +124,20 @@
 	    <artifactId>strman</artifactId>
 	    <version>${strman.version}</version>
 	</dependency>
+
+	<!-- convention-plugin插件，使用了这个插件之后，就可以采用注解的方式配置Action "约定大于配置"
+	    <dependency>
+	        <groupId>org.apache.struts</groupId>
+	        <artifactId>struts2-convention-plugin</artifactId>
+	        <version>2.5.10</version>
+	    </dependency>
+	    config-browser-plugin插件，使用了这个插件之后，就可以很方便的浏览项目中的所有action及其与 jsp view的映射
+	       启动项目，输入路径：http://ip:port/project/config-browser/actionNames.action
+	    <dependency>
+	        <groupId>org.apache.struts</groupId>
+	        <artifactId>struts2-config-browser-plugin</artifactId>
+	        <version>2.5.10</version>
+	    </dependency>-->	
 			  
   </dependencies>
 

@@ -4,7 +4,9 @@
 		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
 		 id="WebApp_ID" version="3.0">
   
-  	<!-- 配置web初始参数，放在ServletContext对象中 -->
+  	<!-- 配置web初始参数，放在ServletContext对象中 
+  	如果你的Spring配置文件名叫applicationContext.xml且放在WEB-INF目录下的话，那么context-param可以不设置。
+  	-->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
@@ -26,6 +28,17 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>	  
+
+		<filter>
+		    <filter-name>struts2</filter-name>
+		    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+		</filter>
+		
+		<filter-mapping>
+		    <filter-name>struts2</filter-name>
+		    <url-pattern>/*</url-pattern>
+		</filter-mapping>
+
   
     <!-- 每一个servlet标签对应一个ServletConfig对象 -->
 	<servlet>
@@ -78,11 +91,11 @@
  	如果在方法内部定义了一些资源(变量，集合等),那么每一个线程都有这些东西，所以就不存在线程安全问题了
  	 -->
 
-	  <!--配置过滤器-->
+	  <!--配置过滤器
 	  <filter>
 	      <filter-name>FilterDemo01</filter-name>
 	      <filter-class>me.gacl.web.filter.FilterDemo01</filter-class>
-	  </filter>
+	  </filter>-->
 	  
 	  <!--映射过滤器
 	  <filter-mapping>元素用于设置一个 Filter 所负责拦截的资源。一个Filter拦截的资源可通过两种方式来指定：Servlet 名称和资源访问的请求路径
@@ -100,10 +113,14 @@
     ERROR：如果目标资源是通过声明式异常处理机制调用时，那么该过滤器将被调用。除此之外，过滤器不会被调用。
       
 	  -->
+	  <!--“/*”表示拦截所有的请求 
 	  <filter-mapping>
-	      <filter-name>FilterDemo01</filter-name>
-	      <!--“/*”表示拦截所有的请求 -->
+	      <filter-name>FilterDemo01</filter-name>	      
 	      <url-pattern>/*</url-pattern>
-	  </filter-mapping> 	 
- 	 
+	  </filter-mapping>--> 	 
+ 	
+
+
+
+	 	 
 </web-app>

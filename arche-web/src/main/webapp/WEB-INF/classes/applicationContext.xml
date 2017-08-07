@@ -10,7 +10,13 @@
 
 
 	<bean id="start" class="xf.mvc.Start" lazy-init = "false"></bean>
-
+	
+	<bean id="endService" class="xf.mvc.struts.EndServiceImpl"></bean>
+	
+	<!-- 
+	<bean id="myAction" class="xf.mvc.struts.MyAction" scope="prototype">
+		<property name="endService" ref="endService"></property>
+	</bean> -->
 
 </beans>
 

@@ -25,14 +25,15 @@ package gce.one;
  *  
  ******************************************************************************/
 
+import gce.base.In;
+import gce.base.StdOut;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import com.zing.Algorithm.Fundamentals.In;
-import com.zing.Algorithm.Fundamentals.StdIn;
-import com.zing.Algorithm.Fundamentals.StdOut;
+
 
 /**
  *  The {@code BinarySearch} class provides a static method for binary
