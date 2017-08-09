@@ -8,11 +8,13 @@ import java.util.concurrent.TimeUnit;
 
 import org.springframework.util.CollectionUtils;
 
+import xf.utility.CommonUtils;
+
 public class LogExecutorServiceImpl implements LogExecutorService {
 
-    private GrouponBackendLogService grouponBackendLogService;
+    private BackendLogService grouponBackendLogService;
 
-    private GrouponRecordLogService grouponRecordLogService;
+    private RecordLogService grouponRecordLogService;
 
     private ExecutorService pool;
 
@@ -102,7 +104,7 @@ public class LogExecutorServiceImpl implements LogExecutorService {
 
     }
 
-    public void executorActionSql(final GrouponBackendLog grouponLog) {
+    public void executorActionSql(final BackendLog grouponLog) {
         // 创建一个可重用固定线程数的线程池
         pool.execute(new Runnable() {
             @Override
@@ -133,7 +135,7 @@ public class LogExecutorServiceImpl implements LogExecutorService {
 
         //String poolName = YccGlobalPropertyConfigurer.getMainPoolId();
 
-        String clientIp = LogCommonUtils.getLocalIpAddr();
+        String clientIp = CommonUtils.getLocalIpAddr();
 
         if (grouponRecordLog.getThrowable() != null) {
             try {
@@ -145,21 +147,21 @@ public class LogExecutorServiceImpl implements LogExecutorService {
         }
 
         grouponRecordLog.setClientIp(clientIp);
-        grouponRecordLog.setInvokeBy(poolName);
+        //grouponRecordLog.setInvokeBy(poolName);
         grouponRecordLog.setExtraInfo(grouponRecordLog.getClazz().getName());
 
         grouponRecordLogService.saveGrouponRecordLog(grouponRecordLog);
     }
 
     private void saveActionSql(BackendLog grouponLog) {
-        grouponBackendLogService.saveGrouponBackendLog(grouponLog);
+//        grouponBackendLogService.saveGrouponBackendLog(grouponLog);
     }
 
-    public void setGrouponBackendLogService(GrouponBackendLogService grouponBackendLogService) {
+    public void setGrouponBackendLogService(BackendLogService grouponBackendLogService) {
         this.grouponBackendLogService = grouponBackendLogService;
     }
 
-    public void setGrouponRecordLogService(GrouponRecordLogService grouponRecordLogService) {
+    public void setGrouponRecordLogService(RecordLogService grouponRecordLogService) {
         this.grouponRecordLogService = grouponRecordLogService;
     }
 

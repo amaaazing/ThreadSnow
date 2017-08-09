@@ -1,6 +1,7 @@
 package xf.log;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.log4j.Logger;
 
 public class LogUtils {
@@ -11,14 +12,14 @@ public class LogUtils {
 
     private LogExecutorService logExecutorService = null;
 
-    private GrouponCodeConfigService grouponCodeConfigService = null;
+    // private GrouponCodeConfigService grouponCodeConfigService = null; 从系统配置表获取配置
 
     private Class<?> clazz;
 
     private LogUtils() {
         try {
-            logExecutorService = (LogExecutorService) SpringUtil.getBackendBean("logExecutorService");
-            grouponCodeConfigService = (GrouponCodeConfigService) SpringUtil.getBackendBean("grouponCodeConfigService");
+            logExecutorService = (LogExecutorService) SpringUtils.getBackendBean("logExecutorService");
+            // grouponCodeConfigService = (GrouponCodeConfigService) SpringUtil.getBackendBean("grouponCodeConfigService");
         } catch (Exception e) {
             log.error("logExecutorService init is error", e);
         }
@@ -40,16 +41,16 @@ public class LogUtils {
         return instance;
     }
 
-    private String getLogEnable() {
-        GrouponCodeConfig grouponCodeConfig = grouponCodeConfigService.getGrouponCodeConfigByKeyAndModule(
-                "groupon.log.enable", null);
-
-        // 开关
-        if (grouponCodeConfig != null) {
-            return grouponCodeConfig.getValue();
-        }
-        return "0";
-    }
+//    private String getLogEnable() {
+//        GrouponCodeConfig grouponCodeConfig = grouponCodeConfigService.getGrouponCodeConfigByKeyAndModule(
+//                "groupon.log.enable", null);
+//
+//        // 开关
+//        if (grouponCodeConfig != null) {
+//            return grouponCodeConfig.getValue();
+//        }
+//        return "0";
+//    }
 
     /**
      * 
@@ -59,9 +60,9 @@ public class LogUtils {
      * @param id 如果是insert 则为返回的id
      */
     public void insertDB(String sql, ParameterMapping[] paramMappSet, Object parameterObject, Object id, String uuid) {
-        if ("0".equals(getLogEnable())) {
-            return;
-        }
+//        if ("0".equals(getLogEnable())) {
+//            return;
+//        }
         if (StringUtils.isBlank(uuid)) {
             return;
         }
@@ -75,9 +76,9 @@ public class LogUtils {
     }
 
     public void insertActionData(BackendLog grouponLog) {
-        if ("0".equals(getLogEnable())) {
-            return;
-        }
+//        if ("0".equals(getLogEnable())) {
+//            return;
+//        }
         logExecutorService.executorActionSql(grouponLog);
     }
 
@@ -109,7 +110,7 @@ public class LogUtils {
     }
 
     public <T> void error(String info, T t, Throwable throwable, int isWarning) {
-        GrouponRecordLog grouponRecordLog = new GrouponRecordLog();
+        RecordLog grouponRecordLog = new RecordLog();
         
         grouponRecordLog.setContext(info);
         grouponRecordLog.setThrowable(throwable);
@@ -122,7 +123,7 @@ public class LogUtils {
      * @Description: 保存日志
      * @param grouponRecordLog
      */
-    private void saveRecordLog(GrouponRecordLog grouponRecordLog) {
+    private void saveRecordLog(RecordLog grouponRecordLog) {
         grouponRecordLog.setClazz(clazz);
         logExecutorService.executorLog(grouponRecordLog);
     }

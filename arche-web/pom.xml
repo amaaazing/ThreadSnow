@@ -12,13 +12,15 @@
   	<spring.version>3.2.0.RELEASE</spring.version> 
   	<struts2-core.version>2.3.30</struts2-core.version>
   	<struts2-spring-plugin.version>2.3.30</struts2-spring-plugin.version> 
-  	<junit.version>4.10</junit.version> 
+  	<junit.version>4.10</junit.version>
+  	<jmockit.version>1.24</jmockit.version> 
   	<maven-dependency-plugin.version>2.1</maven-dependency-plugin.version>
   	<maven-resources-plugin.version>2.3</maven-resources-plugin.version>
   	<maven-clean-plugin.version>2.4.1</maven-clean-plugin.version>
   	<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
   	<log4j.version>1.2.17</log4j.version>
   	<servlet-api.version>2.5</servlet-api.version>
+  	<mybatis.version>3.4.1</mybatis.version>
   	<!-- 数学函数、统计 -->
   	<commons-math.version>3.6.1</commons-math.version>
   	<!-- 字符串处理  A Java 8 library for working with String-->
@@ -40,6 +42,14 @@
 	  	<version>${junit.version}</version> 
 	  	<scope>test</scope> 
 	  </dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.jmockit/jmockit -->
+	<dependency>
+	    <groupId>org.jmockit</groupId>
+	    <artifactId>jmockit</artifactId>
+	    <version>${jmockit.version}</version>
+	    <scope>test</scope>
+	</dependency>
 	  
 	 <dependency>
   		<groupId>org.apache.struts</groupId> 
@@ -123,6 +133,13 @@
 	    <groupId>com.shekhargulati</groupId>
 	    <artifactId>strman</artifactId>
 	    <version>${strman.version}</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis</artifactId>
+	    <version>${mybatis.version}</version>
 	</dependency>
 
 	<!-- convention-plugin插件，使用了这个插件之后，就可以采用注解的方式配置Action "约定大于配置"

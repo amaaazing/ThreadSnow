@@ -17,8 +17,6 @@ import org.apache.struts2.ServletActionContext;
 import xf.utility.CommonUtils;
 
 
-
-
 public class LogAspect implements MethodInterceptor{
 
     private final static Logger log = Logger.getLogger(LogAspect.class);
@@ -31,11 +29,10 @@ public class LogAspect implements MethodInterceptor{
 
         Object result = null;
         Exception e1 = null;
-        String uuid = null;
         
-//        String uuid = ThreadLocalUtil.generateUUID();
-//        
-//        ThreadLocalUtil.setUuid(uuid);
+        String uuid = ThreadLocalUtils.generateUUID();
+        
+        ThreadLocalUtils.setUuid(uuid);
 
         try {
             result = invocation.proceed();
