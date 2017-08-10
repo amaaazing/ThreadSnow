@@ -34,10 +34,18 @@ public class Test {
 //		System.out.println("main");
 //		tt.interrupt();
 		
-		Integer[] array = new Integer[]{1,2,3,4,5,6};
-		List<Integer> list = Arrays.asList(array);
+//		Integer[] array = new Integer[]{1,2,3,4,5,6};
+//		List<Integer> list = Arrays.asList(array);
+//		
+//		System.out.println(ListUtils.sum(list, 6));
 		
-		System.out.println(ListUtils.sum(list, 6));
+		
+			String s1 = "ab" + "c";
+			String s2 = "abc";
+	        
+			System.out.println((s1 == s2) + " : " + (s1.equals(s2)));
+			System.out.println(s1 == s2 + " : " + s1.equals(s2));
+	    
 			
 	}
 

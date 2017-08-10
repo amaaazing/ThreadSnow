@@ -15,7 +15,7 @@
   	<junit.version>4.10</junit.version>
   	<jmockit.version>1.24</jmockit.version> 
   	<maven-dependency-plugin.version>2.1</maven-dependency-plugin.version>
-  	<maven-resources-plugin.version>2.3</maven-resources-plugin.version>
+  	<maven-resources-plugin.version>2.7</maven-resources-plugin.version>
   	<maven-clean-plugin.version>2.4.1</maven-clean-plugin.version>
   	<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
   	<log4j.version>1.2.17</log4j.version>
@@ -35,6 +35,20 @@
     	<artifactId>log4j</artifactId>
     	<version>${log4j.version}</version>
 	 </dependency>
+
+
+	<!-- https://mvnrepository.com/artifact/org.jmockit/jmockit 
+	JMockit要求必须出现在JVM classpath的中Junit前面位置，因此在添加Maven依赖时记得要把JMockit放在Junit最前面，
+	否则报错JMockit初始化失败。
+	替代方案：需要在单元测试类上添加@RunWith(JMockit.class)注解
+	-->
+	<dependency>
+	    <groupId>org.jmockit</groupId>
+	    <artifactId>jmockit</artifactId>
+	    <version>${jmockit.version}</version>
+	    <scope>test</scope>
+	</dependency>
+
  
 	 <dependency>
 	  	<groupId>junit</groupId> 
@@ -42,14 +56,6 @@
 	  	<version>${junit.version}</version> 
 	  	<scope>test</scope> 
 	  </dependency>
-
-	<!-- https://mvnrepository.com/artifact/org.jmockit/jmockit -->
-	<dependency>
-	    <groupId>org.jmockit</groupId>
-	    <artifactId>jmockit</artifactId>
-	    <version>${jmockit.version}</version>
-	    <scope>test</scope>
-	</dependency>
 	  
 	 <dependency>
   		<groupId>org.apache.struts</groupId> 
