@@ -9,15 +9,59 @@
        ObjectFactory？？ 
     <constant name="struts.objectFactory" value="spring"/>-->
 
+	<!-- baseName = message 的全局国际化资源文件，message_zh_CN.properties和 message_en_US.properties-->
+	<constant name="struts.custom.i18n.resource" value="message"></constant>
 	
+	
+	<!-- package把功能相同的action放一起，也会继承 struts-default.xml中默认的拦截器栈
+	默认拦截器应用所有action
+	-->
 	<package name="base" extends="struts-default">
+	
+		<interceptors>
+			<!-- 定义或声明拦截器（拦截action的），怎么应用呢？在具体的action里面应用-->
+			<interceptor name="myInterceptor" class="xf.mvc.struts.interceptor.MyInterceptor">
+				<!-- 拦截器的参数,默认初始值，可以在应用的时候改变这个参数 -->
+				<param name="hello">world</param>
+			</interceptor>
+			
+			<!-- 此拦截器应是针对某一个拦截器的 -->
+			<interceptor name="myMethodInterceptor" class="xf.mvc.struts.interceptor.MyMethodInterceptor"></interceptor>
+			
+			
+			
+			<!-- 定义自己的拦截器栈,配置拦截器的顺序会影响拦截器执行的顺序 -->
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="myInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+			
+		</interceptors>
+	
+	  <!-- 定义这个package中的默认拦截器，会覆盖struts-default.xml中的定义
+	  <default-action-ref name="myStack"></default-action-ref>
+	  -->
+	
+	
 	
 		<!-- 引入struts2-spring-plugin jar包后，Action的2种配置方式之一（Action由Structs管理），此处的class是全类名
 		action中的属性，spring会自动根据bean id 注入，无需在spring文件中配置属性的依赖关系
 		（bean 的 id 值必须和 Action 中的变量名相同）
 		-->
-		<action name="myAction" class="xf.mvc.struts.MyAction">
-			<result>/index.jsp</result>
+		<action name="myAction" class="xf.mvc.struts.MyAction" >
+			<!--  type 默认dispatch，具体参看-struts-default.xml->
+			<result name="" type="">/index.jsp</result>
+			<!-- 应用自定义拦截器后，struts-default.xml中的默认拦截器需要手动引入-->
+			<interceptor-ref name="myInterceptor">
+				<param name="hello">welcome</param>
+			</interceptor-ref>
+			
+			<!-- action要告诉拦截器拦截哪个方法，不拦截哪个方法 -->
+			<interceptor-ref name="myMethodInterceptor">
+				<param name="includeMethods">execute</param>
+				<param name="excludeMethods">不拦截哪个方法，多个方法逗号分隔</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
 		
 		<!-- 引入struts2-spring-plugin jar包后，Action的2种配置方式之二（Action由Spring管理），此处class是spring 的bean id	 
@@ -27,7 +71,16 @@
 		
 		<action name="myAction" class="myAction">
 			<result>/index.jsp</result>
-		</action>	-->	
+		</action>	
+		
+		{1}匹配前面的通配符
+		result里面可以设定参数哦
+		<action name="*myAction" class="myAction" method="{1}">
+			<result>/index.jsp</result>
+		</action>			
+		
+		
+		-->	
 	
 	</package>
 

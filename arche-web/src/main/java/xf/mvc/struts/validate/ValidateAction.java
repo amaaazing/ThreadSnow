@@ -42,6 +42,13 @@ public class ValidateAction extends ActionSupport{
 			// 第一，类型转换错误，action中的属性point就为null，第二，如果再判断null，就会在页面提示2个错误信息
 			this.addFieldError("point", "point is null");
 		}
+		
+		
+		// validate 国际化示例
+		// key 在message的资源中配置,分别在国际化文件中配置不同的value，可以带参数
+		// args : new String[]{}----> {0}\{1}...
+		// this.addFieldError("point", this.getText(key, args));
+		// 注意：如果使用validate.xml方式进行输入校验，可以在该文件中的<message key="hello">标签中写入资源文件的key
     }
 	
 	/**
