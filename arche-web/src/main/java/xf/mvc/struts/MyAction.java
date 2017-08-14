@@ -44,6 +44,17 @@ public class MyAction extends ActionSupport implements ServletRequestAware{
 	 * 2.action要实现这些接口ServletContextAware,ServletRequestAware,ServletResponseAware
 	 * 3.ServletActionContext
 	 * 
+	 * 在Servlet中doGet和doPost方法可以通过ServletContext、HttpServletRequest、HttpServletResponse直接访问Servlet API。
+	那Struts2中的Action没有HttpServletRequest、HttpServletResponse，它怎么访问Servlet API的？
+
+	Struts2提供了三种方法访问Servlet API：
+	ActionContext
+	实现****Aware接口
+	ServletActionContext、
+
+	以上的对象都是以Map的形式存储的
+	 * 
+	 * 
 	 */
 	
 	/**

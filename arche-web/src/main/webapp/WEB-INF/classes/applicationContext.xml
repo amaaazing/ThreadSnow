@@ -17,6 +17,7 @@
 	<bean id="myAction" class="xf.mvc.struts.MyAction" scope="prototype">
 		<property name="endService" ref="endService"></property>
 	</bean> -->
-
+	
+	<import resource="classpath:spring/spring-start.xml"/>
 </beans>
 

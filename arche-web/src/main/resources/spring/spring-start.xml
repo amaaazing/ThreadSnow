@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- xmlns默认命名空间，spring框架知道怎么解析这个文件，spring还支持自定义的标签，不过需要提供解析实现类 
+参考：org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.parseBeanDefinitions(Element, BeanDefinitionParserDelegate)
+-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -9,15 +12,10 @@
                         http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	<bean id="start" class="xf.mvc.Start" lazy-init = "false"></bean>
+	<bean name="TheAction" class="xf.mvc.spring.start.UpperAction">
+		<property name="message" >		
+			<value>HeLLoWorlD</value>
+		</property>
+	</bean>
 	
-	<bean id="endService" class="xf.mvc.struts.EndServiceImpl"></bean>
-	
-	<!-- 
-	<bean id="myAction" class="xf.mvc.struts.MyAction" scope="prototype">
-		<property name="endService" ref="endService"></property>
-	</bean> -->
-	
-	<import resource="classpath:spring/spring-start.xml"/>
 </beans>
-
