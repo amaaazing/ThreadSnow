@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 此bean需要实现MethodReplacer接口 -->
+	<bean id="replacer" class="xf.mvc.spring.replaced.TestMethodReplacer"></bean>
+	
+	<bean id="testChangeMethod" class="xf.mvc.spring.replaced.TestChangeMethod">		
+		<replaced-method name="changeMe" replacer="replacer">
+			<!-- <arg-type>String</arg-type> -->
+		</replaced-method>
+	</bean>
+	
+	<!-- 方法替换：可以在运行时，用新的方法替换现有的方法 。
+	
+	replaced-method：不但可以动态地替换返回实体bean，而且还能动态地更改原有方法的逻辑。
+	
+	注意：由于采用cglib生成之类的方式，所以需要用来动态注入的类，不能是final修饰的；需要动态注入的方法，也不能是final修饰的。
+	
+	-->
+	
+</beans>

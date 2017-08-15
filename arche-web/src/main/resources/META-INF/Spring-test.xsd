@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+       targetNamespace="http://www.lexueba.com/schema/user"
+       xmlns:tns="http://www.lexueba.com/schema/user"
+		elementFormDefault="qualified">
+
+	<element name="user">
+		<complexType>
+			<attribute name="id" type="string"></attribute>
+			<attribute name="userName" type="string"></attribute>
+			<attribute name="email" type="string"></attribute>
+		</complexType>
+	</element>
+	
+	<!-- 描述了一个新的targetNamespace ，并在这个空间中定义了一个name为user的element
+	attribute用于验证spring配置文件中自定义的格式
+	 -->
+	
+</schema>

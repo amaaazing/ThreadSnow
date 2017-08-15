@@ -11,11 +11,18 @@
                         http://www.springframework.org/schema/context
                         http://www.springframework.org/schema/context/spring-context.xsd">
 
-
-	<bean name="TheAction" class="xf.mvc.spring.start.UpperAction">
+	<!-- 配置文件中bean标签的spring容器内部表示类是BeanDefinition，并将这些BeanDefinition注册到BeanDefinitionRegistry
+	spring容器的BeanDefinitionRegistry就像是这些配置信息的内存数据库，主要是以map的形式保存
+	
+	xml中的所有配置都可以在GenericBeanDefinition的实例类中找到对应的配置
+	  -->
+	<bean id="TheAction" name="action1,action2" class="xf.mvc.spring.start.UpperAction">
 		<property name="message" >		
 			<value>HeLLoWorlD</value>
 		</property>
 	</bean>
+	
+	<!-- 通过别名引用同一个数据源而不互相干扰，上面name里的也将作为别名使用 -->
+	<alias name="TheAction" alias="action3,action4"/>
 	
 </beans>

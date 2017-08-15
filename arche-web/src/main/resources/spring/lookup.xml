@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="teacher" class="xf.mvc.spring.lookup.Teacher"></bean>
+	
+	<bean id="getBeanTest" class="xf.mvc.spring.lookup.AbstractGetBean">
+		<lookup-method name="getBean" bean="teacher"/>
+	</bean>
+	<!-- 
+	lookup-method完成的功能是动态地将teacher所代表的bean作为getBean的返回值。
+	但teacher里面的业务逻辑不再符合我们的业务要求时，可以增加新的逻辑实现类。
+	
+	 -->
+</beans>
