@@ -18,7 +18,8 @@ public class TestAction {
 		
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-start.xml");
-					
+		
+		// bean的加载
 		Action action = (Action) context.getBean("TheAction");
 		
 		System.out.println(action.execute("A QQLikeThis"));

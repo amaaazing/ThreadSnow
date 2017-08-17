@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.config.ConstructorArgumentValues;
@@ -13,7 +14,10 @@ import org.springframework.beans.factory.support.AutowireCandidateQualifier;
 import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
 import org.springframework.beans.factory.support.MethodOverrides;
 import org.springframework.beans.factory.xml.BeanDefinitionParserDelegate;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.w3c.dom.Element;
 /**
  * 
@@ -133,15 +137,26 @@ public class AbstractBeanDefinition {
 			bdHolder = delegate.decorateBeanDefinitionIfRequired(ele, bdHolder);
 			try {
 				// Register the final decorated instance.
-				BeanDefinitionReaderUtils.registerBeanDefinition(bdHolder, getReaderContext().getRegistry());
+//				BeanDefinitionReaderUtils.registerBeanDefinition(bdHolder, getReaderContext().getRegistry());
 			}
 			catch (BeanDefinitionStoreException ex) {
-				getReaderContext().error("Failed to register bean definition with name '" +
-						bdHolder.getBeanName() + "'", ele, ex);
+//				getReaderContext().error("Failed to register bean definition with name '" +
+//						bdHolder.getBeanName() + "'", ele, ex);
 			}
 			// Send registration event.
-			getReaderContext().fireComponentRegistered(new BeanComponentDefinition(bdHolder));
+//			getReaderContext().fireComponentRegistered(new BeanComponentDefinition(bdHolder));
 		}
 	}
+	
+	
+	/**
+	 * 设置了几个自动装配的特殊规则，如果是BeanFactory类型，则注入beanFactory对象，
+	 * 如果是ResourceLoader、ApplicationEventPublisher、ApplicationContext类型则
+	 * 注入当前对象（applicationContext对象）。
+	 */
+//	beanFactory.registerResolvableDependency(BeanFactory.class, beanFactory);
+//	beanFactory.registerResolvableDependency(ResourceLoader.class, this);
+//	beanFactory.registerResolvableDependency(ApplicationEventPublisher.class, this);
+//	beanFactory.registerResolvableDependency(ApplicationContext.class, this);
 	
 }

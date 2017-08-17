@@ -9,6 +9,7 @@ public class MyNamespaceHandler extends NamespaceHandlerSupport{
 	public void init() {
 		
 		registerBeanDefinitionParser("user", new UserBeanDefinitionParser());
+		// 可注册多个标签解析器
 		
 	}
 	
