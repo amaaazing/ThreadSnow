@@ -9,7 +9,9 @@
   <url>http://maven.apache.org</url>
 
  <properties>
-  	<spring.version>3.2.0.RELEASE</spring.version> 
+  	<spring.version>3.2.0.RELEASE</spring.version>
+  	<aspectj.version>1.7.2</aspectj.version>
+  	<cglib.version>3.1</cglib.version>
   	<struts2-core.version>2.3.30</struts2-core.version>
   	<struts2-spring-plugin.version>2.3.30</struts2-spring-plugin.version> 
   	<junit.version>4.10</junit.version>
@@ -118,6 +120,20 @@
 	  	<artifactId>spring-test</artifactId> 
 	  	<version>${spring.version}</version> 
 	  </dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver 支持spring AOP-->
+	<dependency>
+	    <groupId>org.aspectj</groupId>
+	    <artifactId>aspectjweaver</artifactId>
+	    <version>${aspectj.version}</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/cglib/cglib 支持spring AOP-->
+	<dependency>
+	    <groupId>cglib</groupId>
+	    <artifactId>cglib</artifactId>
+	    <version>${cglib.version}</version>
+	</dependency>
 
 	<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
 	<dependency>

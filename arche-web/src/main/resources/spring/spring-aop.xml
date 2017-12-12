@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<!-- Spring默认不支持@Aspect 注解风格的切面声明，通过如下配置开启@Aspect支持 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
+	<bean id="test" class="xf.mvc.spring.aop.TestBean"></bean>
+	
+	<bean id="myAdvisor" class="xf.mvc.spring.aop.AspectJTest"></bean>
+</beans>
