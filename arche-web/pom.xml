@@ -186,6 +186,26 @@
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<testOutputDirectory>target/test/java</testOutputDirectory>
+<!--
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				 资源根目录排除各环境的配置，使用单独的资源目录来指定 --><!--
+				<excludes>
+					<exclude>META-INF/env/test/**</exclude>
+					<exclude>META-INF/env/product/**</exclude>
+					<exclude>META-INF/env/stg/**</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				在激活指定的profile时，会加载指定目录下的配置文件 --><!--
+				<directory>src/main/resources/${profiles.active}</directory>
+			</resource>
+		</resources>
+		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+		-->
+
 		<plugins>			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -247,4 +267,35 @@
 			
 		</plugins>
 	</build>
+
+	<!-- maven   META-INF目录在resources下 maven打包命令：maven clean package -Ptest -->
+	<profiles>
+		<profile>
+			<!-- 测试环境 -->
+			<id>test</id>
+			<properties>
+				<profiles.active>META-INF/env/test</profiles.active>
+			</properties>
+			<activation>
+				<!-- 设置默认激活这个配置 -->
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<!-- 生产环境 -->
+			<id>product</id>
+			<properties>
+				<profiles.active>META-INF/env/product</profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<!-- 预发布环境 -->
+			<id>stg</id>
+			<properties>
+				<profiles.active>META-INF/env/stg</profiles.active>
+			</properties>
+		</profile>
+	</profiles>
+
+
 </project>
