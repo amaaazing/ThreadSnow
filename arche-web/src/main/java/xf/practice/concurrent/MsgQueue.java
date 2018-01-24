@@ -9,6 +9,7 @@ import java.util.Vector;
  */
 public class MsgQueue {
 
+	// Vector == 线程安全的ArrayList
 	Vector<Object> queue = new Vector<Object>();
 	
 	// 发送消息 -- 消息加入队列中

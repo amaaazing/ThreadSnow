@@ -67,7 +67,7 @@ public class TCPServer implements Runnable,Cloneable{
 					// 在新的线程中处理新的连接
 					TCPServer newSocket = (TCPServer) clone();
 					// 克隆处理的newSocket
-					newSocket.server = null; // 以处理数据套接字
+					newSocket.server = null; // 以处理数据套接字，克隆出来的对象中条件代码不一样了
 					newSocket.data = dataSocket;
 					newSocket.runner =  new Thread(newSocket);					
 					newSocket.runner.start();

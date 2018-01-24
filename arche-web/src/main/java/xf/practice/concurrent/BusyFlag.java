@@ -46,7 +46,8 @@ public class BusyFlag {
 		// 但是我们不能假设现在条件仍然是满足的，而不再次去检查条件
 		while(tryGetBusyFlag() == false){
 			try{
-				wait(); // wait()方法在进入等待前会释放锁，但从wait()方法返回时会再次获得锁
+				wait(); // wait()方法在进入等待前会释放锁，但从wait()方法返回时会再次获得锁，
+				// wait()方法在进入等待前会释放锁，因此不必担心getBusyFlag（）加上synchronized后锁的作用域过大，导致死锁。
 			}catch(Exception e){}
 		}
 	}
