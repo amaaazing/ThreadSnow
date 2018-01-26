@@ -1,3 +1,11 @@
+/**
+ * 使用方法：
+ *         popupAssit.dialog({
+            popupName: ".edit_companyinfo_popwin",
+            maskLayer: true
+        });
+ * 其中edit_companyinfo_popwin为div的class
+ */
 jQuery.popupUtil = popupAssit = {
     ieLower:$.browser.msie&&$.browser.version==6||false,
     popArgs:{popName:false,popFixed:false,popDelayTime:false},
