@@ -29,6 +29,15 @@ public class WechatPicApiUtil {
     private static final String CONNECTION_ERROR_PIC_URL = "http://vip.samsclub.cn/statics-gen/samclub/images/passport/logo.png";
 
     static {
+        /**
+         * #wechat photo API config
+         wechat_photo_api_url=https://photo.dev.sams.wiredcraft.net/api/internal/avatars/
+         wechat_photo_api_key=59d99ca7d71043caadaf60e4286b6e96
+         #wechat_photo_api_url=https://photo.staging.sams.wiredcraft.net/api/internal/avatars/
+         #wechat_photo_api_key=df87f4efadec494ca78d7c396bd37b3e
+         wechat_photo_api_connection_time_out = 5000
+         wechat_photo_api_socket_time_out = 5000
+         */
 //        API_URL = YccGlobalPropertyConfigurer.getPropertyByKey("vip_config.properties", "wechat_photo_api_url");
 //        API_KEY = YccGlobalPropertyConfigurer.getPropertyByKey("vip_config.properties", "wechat_photo_api_key");
 //

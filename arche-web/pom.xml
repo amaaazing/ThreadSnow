@@ -28,6 +28,7 @@
   	<!-- 字符串处理  A Java 8 library for working with String-->
   	<strman.version>0.4.0</strman.version>
 	 <bcprov-ext-jdk15on.version>1.52</bcprov-ext-jdk15on.version>
+	 <commons-net.version>3.4</commons-net.version>
   </properties>
   
   
@@ -209,6 +210,12 @@
 		 <groupId>org.bouncycastle</groupId>
 		 <artifactId>bcprov-ext-jdk15on</artifactId>
 		 <version>${bcprov-ext-jdk15on.version}</version>
+	 </dependency>
+
+	 <dependency>
+		 <groupId>commons-net</groupId>
+		 <artifactId>commons-net</artifactId>
+		 <version>${commons-net.version}</version>
 	 </dependency>
 
 	 <!-- convention-plugin插件，使用了这个插件之后，就可以采用注解的方式配置Action "约定大于配置"
