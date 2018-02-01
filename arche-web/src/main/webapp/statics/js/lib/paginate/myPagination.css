@@ -1,0 +1,95 @@
+.myPagination ,.myPaginationTop{
+	font-size: 12px;
+}
+ .myPagination em ,.myPaginationTop em{
+ 	font-style:normal;
+ }      
+.myPagination a , .myPaginationTop a{
+    text-decoration: none;
+	border: solid 1px #ccc;
+	color: #333;
+}
+.myPaginationTop span ,.myPaginationTop a {
+	display:-moz-inline-box;
+	display:inline-block;
+	width: 58px;
+	height: 22px;
+	line-height:22px;
+	text-align:center;
+	margin-right: 5px;
+}
+.myPagination a, .myPagination span{
+    display: block;
+    float: left;
+    padding:0 6px;
+    margin-right: 5px;
+	margin-bottom: 10px;
+	height:20px;
+	line-height:20px;
+}
+
+.myPagination .current ,.myPaginationTop .current{
+    background: #ffe3e3;
+    color: #c00;
+	border: solid 1px #c00;
+}
+
+.myPagination .current.prev, .myPagination .current.next,.myPaginationTop .current{
+	color:#999;
+	border-color:#999;
+	background:#fff;
+}
+
+.confirmBtn {
+	width:40px;
+	height:21px;
+	border:none;
+	background:url(images/btn.png) no-repeat;
+	line-height:21px; 
+	cursor:pointer;
+}
+.numberInput{
+	 height:18px;
+	 width:26px;
+	 margin:0 3px;
+	 border: solid 1px #dbdbdb;
+}
+
+.myPagination .myspan{
+	display: block;
+    float: left;
+    padding: 0em 0.5em;
+    margin-right: 5px;
+	margin-bottom: 5px;
+}
+.pageSelect{
+    float: left;
+	margin-top: 2px;
+}
+.myPagination a:hover{border:1px solid #c00;color:#c00;}
+.myPagination .prev,.myPagination .next{background:url(images/nextprev.png) no-repeat;}
+.myPagination .prev{padding-left:15px;background-position:5px 7px;}
+.myPagination .next{padding-right:15px;background-position:47px -13px;}
+.myPagination a.prev:hover,.myPagination a.next:hover{background-color:#fef9f9;}
+.myPaginationTop a {
+    background: url("images/order.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 18px;
+    margin-left: 5px;
+    vertical-align: middle;
+    width: 18px;
+}
+.myPaginationTop a.nopre {
+    background-position: -90px -40px;
+    cursor: default;
+}
+.myPaginationTop a.pre {
+    background-position: -130px -40px;
+}
+.myPaginationTop a.nopagnext {
+    background-position: -108px -40px;
+    cursor: default;
+}
+.myPaginationTop a.pagnext {
+    background-position: -148px -40px;
+}
