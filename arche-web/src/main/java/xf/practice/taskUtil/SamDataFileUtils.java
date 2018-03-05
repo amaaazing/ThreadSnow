@@ -371,7 +371,7 @@ public class SamDataFileUtils {
             item.put("backup", "1");
             items.add(item);
             data.put("items", items);
-        } catch (JSONException e) {
+        } catch (Exception e) {
 
         }
 

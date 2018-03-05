@@ -261,16 +261,16 @@
 		-->
 
 		<plugins>			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-compiler-plugin</artifactId>-->
+				<!--<version>${maven-compiler-plugin.version}</version>-->
+				<!--<configuration>-->
+					<!--<source>1.7</source>-->
+					<!--<target>1.7</target>-->
+					<!--<encoding>UTF-8</encoding>-->
+				<!--</configuration>-->
+			<!--</plugin>-->
 			
 			<!-- 指定编码集，也可使用属性<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>指定 -->
 			<plugin> 
