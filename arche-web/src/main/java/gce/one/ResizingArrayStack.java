@@ -68,7 +68,6 @@ public class ResizingArrayStack<Item> implements Iterator<Item> {
 		return a[--N];
 	}
 
-	@Override
 	public void remove() {
 		
 	}

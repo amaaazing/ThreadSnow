@@ -2,6 +2,8 @@ package xf.pattern.listener;
 
 public class PersonTest {
 
+
+
     /**
      * @Method: main
      * @Description: 测试Person类

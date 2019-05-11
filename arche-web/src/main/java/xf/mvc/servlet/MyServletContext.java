@@ -1,15 +1,14 @@
 package xf.mvc.servlet;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 /**
  * 重写init()方法，视情况调用super.init()
  * 重写了Servlet的init方法后一定要记得调用父类的init方法，否则在service/doGet/doPost方法中使用
@@ -34,6 +33,7 @@ public class MyServletContext extends HttpServlet{
 	 * 		2.获取WEB应用的初始化参数。方法同ServletConfig
 	 * 		3.用servletContext实现请求转发
 	 * 		4.利用ServletContext对象读取资源文件(类装载器也可读)
+	 * 	5.访问服务器端的文件系统资源
 	 * 
 	 */
 	
@@ -44,6 +44,8 @@ public class MyServletContext extends HttpServlet{
 		ServletContext context = getServletContext();// 从父类GenericServlet中获取ServletContext对象
 		RequestDispatcher rd = context.getRequestDispatcher("/servlet/ServletContextDemo");//获取请求转发对象(RequestDispatcher)
 		rd.forward(request, response);//调用forward方法实现请求转发
+		context.log("这是servlet的输出日志。");
+		// 默认情况下，日志输出到<CATALINA_HOME>/logs/localhost.YYYY-MM-DD.log文件中
 	}
 	
 	

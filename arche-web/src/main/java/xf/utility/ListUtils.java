@@ -1,5 +1,9 @@
 package xf.utility;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +11,7 @@ public class ListUtils {
 
 	// chops a list into non-view sublists of length L
 	/**
-	 * 切分list
+	 * 等分list
 	 * 
 	 * @param list
 	 * @param L 小list的长度
@@ -34,7 +38,7 @@ public class ListUtils {
 	/**
 	 * 数组递归求和
 	 * 
-	 * @param a
+	 * @param arr
 	 * @param n 数组的前n项和
 	 * @return
 	 */
@@ -46,7 +50,7 @@ public class ListUtils {
 	/**
 	 * list递归求和
 	 * 
-	 * @param a
+	 * @param list
 	 * @param n list的前n项和
 	 * @return
 	 */
@@ -59,4 +63,27 @@ public class ListUtils {
 		 
 	     return n == 0 ? 0 : sum(arr, n -1) + arr[n -1];
 	}
+
+	/**
+	 * 要深拷贝的类（T）需要继承 Serializable 接口
+	 * list 深拷贝 改变listA中的Object不会影响listB中的Object，因为存储的对象已经不一样
+	 * 相互不受影响
+	 * 使用System.arraycopy()方法 是属性浅拷贝，包括使用list.addAll()等
+	 * @param src
+	 * @param <T>
+	 * @return
+	 * @throws Exception
+	 */
+	public static <T> List<T> deepCopyList(List<T> src) throws Exception
+	{
+		List<T> dest = null;
+		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+		ObjectOutputStream out = new ObjectOutputStream(byteOut);
+		out.writeObject(src);
+		ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
+		ObjectInputStream in = new ObjectInputStream(byteIn);
+		dest = (List<T>) in.readObject();
+		return dest;
+	}
+
 }

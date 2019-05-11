@@ -73,6 +73,12 @@
 		    <groupId>org.apache.struts</groupId>
 		    <artifactId>struts2-spring-plugin</artifactId>
 		    <version>${struts2-spring-plugin.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-web</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
   	 
   	 <dependency>
@@ -216,6 +222,12 @@
 		 <groupId>commons-net</groupId>
 		 <artifactId>commons-net</artifactId>
 		 <version>${commons-net.version}</version>
+	 </dependency>
+
+	 <dependency>
+		 <groupId>org.apache.shiro</groupId>
+		 <artifactId>shiro-core</artifactId>
+		 <version>1.4.0</version>
 	 </dependency>
 
 	 <!-- convention-plugin插件，使用了这个插件之后，就可以采用注解的方式配置Action "约定大于配置"

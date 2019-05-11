@@ -6,8 +6,8 @@ public class Demo {
 	public static void main(String[] args) {
 		A a2 = new B();
 
-		System.out.println(a2.show(new A()));
-		System.out.println(a2.show(new B()));
+		System.out.println(a2.show(new A()));//ba
+		System.out.println(a2.show(new B()));//bb
 		System.out.println(new B().show(new A()));
 		System.out.println(new B().show(new B()));
 		

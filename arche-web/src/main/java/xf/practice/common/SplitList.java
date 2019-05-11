@@ -2,7 +2,6 @@ package xf.practice.common;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class SplitList {
@@ -26,7 +25,8 @@ public class SplitList {
 	}
 
 	public static void main(String[] args) {
-		List<Integer> numbers = Collections.unmodifiableList(Arrays.asList(5,3,1,2,9,5,0,7));
+//		List<Integer> numbers = Collections.unmodifiableList(Arrays.asList(5,3,1,2,9,5,0,7));
+		List<Integer> numbers = Arrays.asList(5,3,1,2,9,5,0,7);
 		List<List<Integer>> parts = chopped(numbers, 3);
 		System.out.println(parts); // prints "[[5, 3, 1], [2, 9, 5], [0, 7]]"
 		parts.get(0).add(-1);
