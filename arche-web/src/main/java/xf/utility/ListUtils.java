@@ -1,10 +1,13 @@
 package xf.utility;
 
+import org.springframework.util.Assert;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ListUtils {
@@ -86,4 +89,58 @@ public class ListUtils {
 		return dest;
 	}
 
+	/**
+	 * 将list根据pageSize转为2维list
+	 *
+	 * @param <T>
+	 * @param ori 原始list,如果为空或者空list,返回size为1的list,get(0)为emptyList
+	 * @param pageSize 分页大小
+	 * @return
+	 */
+	public static <T> List<List<T>> pageList(List<T> ori, int pageSize) {
+		//赋空值
+		if (ori == null){
+			ori= Collections.emptyList();
+		}
+		//如果每页大小大于总大小,直接返回本页
+		if (pageSize >= ori.size()) {
+			return Collections.singletonList(ori);
+		}
+		int maxPage = ori.size() / pageSize
+				+ Math.min(ori.size() % pageSize, 1);
+		List<List<T>> result = new ArrayList<List<T>>(maxPage);
+		for (int currPage = 1; currPage <= maxPage; currPage++) {
+			result.add(new ArrayList<T>(ori.subList((currPage - 1) * pageSize,
+					Math.min((currPage) * pageSize, ori.size()))));
+		}
+		return result;
+	}
+
+	/**
+	 *
+	 * @Description: 将多个List转化为一个二维List
+	 * eg:[1,"2",3],[2,"3",5]--->[[1,2],["2","3"],[3,5]]
+	 * @param list
+	 * @return
+	 */
+	public static <T> List<List<Object>> convertToTwoDimenList(List<T>... list) {
+		Integer lengthOfPerList = null;
+		for (List<T> obj : list) {
+			if (lengthOfPerList == null) {
+				lengthOfPerList = obj.size();
+			}
+			Assert.isTrue(lengthOfPerList == obj.size(), "每个List的长度必须相等");
+		}
+
+		List<List<Object>> twoDimenList = new ArrayList<List<Object>>(lengthOfPerList);
+		for (int i = 0; i < lengthOfPerList; i++) {
+			List<Object> objList = new ArrayList<Object>();
+			for (List<T> obj : list) {
+				objList.add(obj.get(i));
+			}
+			twoDimenList.add(objList);
+		}
+
+		return twoDimenList;
+	}
 }
